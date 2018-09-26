@@ -6,7 +6,7 @@ struct input
 {
 	int trackNo;       /*The track number. */
 	int processed;     /*Processed flag.   */
-}inputTracks[100];
+}input[100];
 
 /*Structure for storing the track numbers in the order they are processed. */
 struct process
@@ -33,7 +33,7 @@ int main()
     printf("Enter the trackno of each:");
     for(int i=0;i<noOfTracks;i++)
     {
-        scanf("%d",&inputTracks[i].trackNo);
+        scanf("%d",&input[i].trackNo);
     }
 
     fcfs();
@@ -47,7 +47,7 @@ void clearDS()
 	
 	for(i=0;i<noOfTracks;i++)
 	{
-		inputTracks[i].processed = 0;
+		input[i].processed = 0;
 		Scheduling[i].trackReferenced =0;
 		Scheduling[i].seekTime = 0;
 	}
@@ -61,7 +61,7 @@ int checkIfProcessed(int trackNo)
 	{
 		if(inputTracks[i].trackNo == trackNo)
 		{
-			returnValue = (inputTracks[i].processed == 0)?i:-1;
+			returnValue = (input[i].processed == 0)?i:-1;
 			break;
 		}
 	}
@@ -92,9 +92,9 @@ void fcfs()
     int armposition=currentArmPosition;
     for(int i=0;i<noOfTracks;i++)
     {
-        Scheduling[i].trackReferenced=inputTracks[i].trackNo;
-        Scheduling[i].seekTime=abs((armposition-inputTracks[i].trackNo));
-        armposition=inputTracks[i].trackNo;
+        Scheduling[i].trackReferenced=input[i].trackNo;
+        Scheduling[i].seekTime=abs((armposition-input[i].trackNo));
+        armposition=input[i].trackNo;
     }
     
     print("FCFS");
@@ -114,7 +114,7 @@ void scan()
             Scheduling[i].trackReferenced=currentTrack;
             Scheduling[i].seekTime=abs((currentTrack-armposition));
             armposition=currentTrack;
-            inputTracks[temp].processed=1;
+            input[temp].processed=1;
             i++;
         }
         if(currentTrack==0)
@@ -148,7 +148,7 @@ void cscan()
             Scheduling[i].trackReferenced=currentTrack;
             Scheduling[i].seekTime=abs((currentTrack-armposition));
             armposition=currentTrack;
-            inputTracks[temp].processed=1;
+            input[temp].processed=1;
             i++;
         }
         if(currentTrack==0)
