@@ -85,17 +85,17 @@ void process()
             {
                 z++;
             }
-        }while(c<=n && z<=n)
-    }
-    if(k==n)
+        }
+    }while(c<=pn && z<=pn);
+    if(k==pn)
     {
         printf("It is in safe state!\n");
-        for(i=0;i<k;i++)
+        for(int i=0;i<k;i++)
         {
             printf("%d",safe[k]);
         }
     }
     else{
-        printf("Dead lock occurs!\n")
+        printf("Dead lock occurs!\n");
     }
 }
